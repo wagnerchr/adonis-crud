@@ -20,12 +20,7 @@ new Ignitor(APP_ROOT, { importer: IMPORTER })
     app.listenIf(app.managedByPm2, 'SIGINT', () => app.terminate())
   })
   .httpServer()
-  .start((handle: any) => {
-    const port = process.env.PORT || 10000
-    return handle.listen(port, '0.0.0.0', () => {
-      console.log(`Server is running on http://0.0.0.0:${port}`)
-    })
-  })
+  .start()
   .catch((error) => {
     process.exitCode = 1
     prettyPrintError(error)
